@@ -1,0 +1,24 @@
+{
+    "name": "frc/slack-notification",
+    "license": "MIT",
+    "type": "library",
+    "description": "Send slack notifications",
+    "keywords": [
+        "WordPress",
+        "php"
+    ],
+    "authors": [
+        {
+            "name": "Janne Aalto",
+            "email": "janne.aalto@frantic.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3"
+    },
+    "autoload": {
+        "files": [
+            "src/Notification.php"
+        ]
+    }
+}
