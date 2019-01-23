@@ -35,17 +35,22 @@ class Notification {
         return true;
     }
 
-    public function sendMessageToSlack($message) {
+    private function changeLineBreaks($message) {
+        return preg_replace('/<br\s?\/?>/i', "\r\n", $message);
+    }
+
+    public function sendMessageToSlack($message, $icon = ':female-detective:', $username = 'PHP Notifier') {
 
         if (!$this->checkEnv()) {
             return false;
         }
 
+        $message = $this->changeLineBreaks($message);
         $data = 'payload=' . json_encode([
                 'channel'    => $this->slackReportChannel,
-                'username'   => 'PHP Notifier',
+                'username'   => $username,
                 'text'       => $message,
-                'icon_emoji' => ':female-detective:'
+                'icon_emoji' => $icon
             ]);
 
         $ch = curl_init($this->webhookUrl);
